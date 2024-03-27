@@ -9,11 +9,17 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@Table(name = "hospitals")
+@Table(name = "hospitals", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "name",
+        })
+})
 public class Hospital extends DateAudit {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable=false)
     private String name;
     private String address;
     @Enumerated(EnumType.STRING)
