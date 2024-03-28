@@ -15,7 +15,7 @@ import {
     Box,
 } from '@mui/material';
 import { Delete, Edit, RemoveRedEyeOutlined } from "@mui/icons-material";
-import HospitalDetailModal from "./HospitalDetailModal";
+import HospitalDetail from "./HospitalDetail";
 import HospitalUpdate from "./HospitalUpdate";
 import HospitalDelete from "./HospitalDelete";
 import HospitalCreate from "./HospitalCreate";
@@ -33,7 +33,7 @@ const AddButton = styled(Button)({
     padding: '0.5rem 1rem',
 });
 
-function HospitalList() {
+function Hospitals() {
     const [data, setData] = useState([]);
     const [selectedHospital, setSelectedHospital] = useState(null);
     const [openViewModal, setOpenViewModal] = useState(false);
@@ -152,13 +152,13 @@ function HospitalList() {
                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                 <TableCell align="center">{hospital.name}</TableCell>
                                 <TableCell align="center">{hospital.address}</TableCell>
-                                <TableCell align="center">{hospital.hospitalType}</TableCell>
+                                <TableCell align="center">{hospital.hospitalType.replace('_', ' ')}</TableCell>
                                 {operationsCell(hospital)}
                             </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
-                <HospitalDetailModal open={openViewModal} handleCloseModal={handleCloseViewModal} hospital={selectedHospital} />
+                <HospitalDetail open={openViewModal} handleCloseModal={handleCloseViewModal} hospital={selectedHospital} />
                 <HospitalUpdate open={openUpdateModal} handleCloseModal={handleCloseUpdateModal} hospital={selectedHospital} />
                 <HospitalDelete open={openDeleteModal} handleCloseModal={handleCloseDeleteModal} hospitalName={selectedHospitalName} hospitalID={selectedHospitalID} handleDelete={handleDeleteHospital} />
                 <HospitalCreate open={openCreateModal} handleCloseModal={() => setOpenCreateModal(false)} fetchData={fetchData} />
@@ -167,4 +167,4 @@ function HospitalList() {
     );
 }
 
-export default HospitalList;
+export default Hospitals;

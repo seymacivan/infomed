@@ -12,8 +12,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @Table(name = "patients", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
-                "name",
-                "username",
                 "tc"
         })
 })
