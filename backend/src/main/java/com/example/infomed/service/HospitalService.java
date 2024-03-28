@@ -43,7 +43,7 @@ public class HospitalService {
 
     public HospitalDto getHospital(Long id) {
         Hospital hospital = hospitalRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("hospital", "id", String.valueOf(id))
+                () -> new ResourceNotFoundException("hospital.jpg", "id", String.valueOf(id))
         );
         return modelMapper.map(hospital, new TypeToken<HospitalDto>(){}.getType());
     }
@@ -51,7 +51,7 @@ public class HospitalService {
     public HospitalDto updateHospital(HospitalDto hospitalDto) {
         Optional<Hospital> hospital = hospitalRepository.findByName(hospitalDto.getName());
         if (hospital.isEmpty()){
-            throw new ResourceNotFoundException("hospital", "name", String.valueOf(hospitalDto.getName()));
+            throw new ResourceNotFoundException("hospital.jpg", "name", String.valueOf(hospitalDto.getName()));
         }
         else{
             Hospital existingHospital = hospital.get();
@@ -65,7 +65,7 @@ public class HospitalService {
     public void deleteHospital(Long id) throws ResourceNotFoundException {
         Optional<Hospital> hospital = hospitalRepository.findById(id);
         if (hospital.isEmpty()){
-            throw new ResourceNotFoundException("hospital", "id", String.valueOf(id));
+            throw new ResourceNotFoundException("hospital.jpg", "id", String.valueOf(id));
         }
         else hospitalRepository.deleteById(id);
     }
