@@ -1,4 +1,6 @@
 INFOMED 
+
+
 This project provides an API for managing relationships between hospitals and patients. It offers basic CRUD (Create, Read, Update, Delete) operations for hospitals and patients. Additionally, it enables the assignment and management of patients to hospitals through this API.
 
 Getting Started
