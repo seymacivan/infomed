@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import hospitalImage from '../../static/image/Hospital.png';
 
-function HospitalDetailModal({ open, handleCloseModal, hospital }) {
+function HospitalDetail({ open, handleCloseModal, hospital }) {
   return (
       <Modal
           open={open}
@@ -38,7 +38,7 @@ function HospitalDetailModal({ open, handleCloseModal, hospital }) {
                   </TableRow>
                   <TableRow>
                     <TableCell><strong>Hospital Type:</strong></TableCell>
-                    <TableCell>{hospital && hospital.hospitalType}</TableCell>
+                    <TableCell>{hospital && hospital.hospitalType.replace('_', ' ')}</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -52,4 +52,4 @@ function HospitalDetailModal({ open, handleCloseModal, hospital }) {
   );
 }
 
-export default HospitalDetailModal;
+export default HospitalDetail;

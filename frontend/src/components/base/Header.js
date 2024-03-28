@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,9 +6,14 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MedicationIcon from '@mui/icons-material/Medication';
+
 const pages = ['Hospitals', 'Patients'];
 
-function Header() {
+function Header({ currentPage, onPageChange }) {
+    const handlePageChange = (page) => {
+        onPageChange(page);
+    };
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -38,6 +43,8 @@ function Header() {
                             <Button
                                 key={page}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
+                                onClick={() => handlePageChange(page)}
+                                disabled={currentPage === page} // disable the button if it's already selected
                             >
                                 {page}
                             </Button>
@@ -48,4 +55,5 @@ function Header() {
         </AppBar>
     );
 }
+
 export default Header;
